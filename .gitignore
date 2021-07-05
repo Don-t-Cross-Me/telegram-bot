@@ -1,0 +1,12 @@
+# VS Code Configurations 
+.vscode/ 
+
+# Build Files 
+bin/
+obj/ 
+
+# Release Files 
+release/ 
+
+# Configuration Files 
+App.config 

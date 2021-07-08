@@ -70,6 +70,7 @@ public class Worker : BackgroundService
         var action = (message.Text.Split(' ').First()) switch
         {
             "/hello"    => Hello(message),
+            "/cross"    => Cross(message), 
             _           => Usage(message)
         };
         var sentMessage = await action;
@@ -78,6 +79,14 @@ public class Worker : BackgroundService
         static async Task<Message> Hello(Message message)
         {
             const string reply = "Hello!";
+            return await Bot.SendTextMessageAsync(chatId: message.Chat.Id,
+                                                    text: reply,
+                                                    replyMarkup: new ReplyKeyboardRemove());
+        }
+
+        static async Task<Message> Cross(Message message)
+        {
+            const string reply = "Dont' cross me, animal crossing \U0001F624";
             return await Bot.SendTextMessageAsync(chatId: message.Chat.Id,
                                                     text: reply,
                                                     replyMarkup: new ReplyKeyboardRemove());
